@@ -154,7 +154,7 @@ int main(void)
 
 	gpio_pin_config_t led_config = {
         kGPIO_DigitalOutput, 0,
-    };
+		};
     gpio_pin_config_t button_config = {
     	kGPIO_DigitalInput, 0,
         };
@@ -177,7 +177,7 @@ int main(void)
     adc16ConfigStruct.enableLowPower = false;
     adc16ConfigStruct.enableContinuousConversion = false;
 
-    //ADC16_GetDefaultConfig(&adc16ConfigStruct);
+
 #ifdef BOARD_ADC_USE_ALT_VREF
     adc16ConfigStruct.referenceVoltageSource = kADC16_ReferenceVoltageSourceValt;
 #endif
@@ -202,7 +202,7 @@ int main(void)
 
 
     /* Init output LED GPIO. */
-       //GPIO_PinInit(BOARD_LED_GPIO, BOARD_LED_GPIO_PIN, &led_config);
+
     GPIO_PinInit( EXT_BOARD_LED_G_GPIO, EXT_BOARD_LED_G_GPIO_PIN, &led_config);
     GPIO_PinInit( EXT_BOARD_LED_F_GPIO, EXT_BOARD_LED_F_GPIO_PIN, &led_config);
     GPIO_PinInit( EXT_BOARD_LED_A_GPIO, EXT_BOARD_LED_A_GPIO_PIN, &led_config);
@@ -225,9 +225,6 @@ int main(void)
     /* Select the clock source for the TPM counter as kCLOCK_PllFllSelClk */
     CLOCK_SetTpmClock(1U);
 
-//    /* Print a note to terminal */
-//    PRINTF("\r\nTPM example to simulate a timer\r\n");
-
     TPM_GetDefaultConfig(&tpmInfo);
 	
 	/* TPM clock divide by 4 */
@@ -247,7 +244,6 @@ int main(void)
 
     TPM_StartTimer(BOARD_TPM, kTPM_SystemClock);
 
-    Disp_7_seg(rsb_Digito_unidad);
     while (true)
     {
     	if(GPIO_ReadPinInput(BUTTON_RESET, BUTTON_RESET_PIN)==TRUE)
@@ -320,7 +316,6 @@ void Compare(void){
 		rsb_Digito_decena=9;
 		rsb_Digito_unidad=9;
 	}
-
 }
 void Cuenta(void){
 
@@ -331,7 +326,6 @@ void Cuenta(void){
         rbi_tpmIsrFlag = false;
         if(rsl_milisecondCounts >= SECONDLOOP)
         {
-//
         	rsb_SecondCount++;
             rsl_milisecondCounts = 0U;
         }
@@ -452,8 +446,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_E_GPIO, 1u << EXT_BOARD_LED_E_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_D_GPIO, 1u << EXT_BOARD_LED_D_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
-
 	}
 	else if(lsb_Digito==1)
 	{
@@ -485,8 +477,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_B_GPIO, 1u << EXT_BOARD_LED_B_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_E_GPIO, 1u << EXT_BOARD_LED_E_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_D_GPIO, 1u << EXT_BOARD_LED_D_GPIO_PIN);
-
-
 	}
 	else if(lsb_Digito==3)
 	{
@@ -503,7 +493,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_B_GPIO, 1u << EXT_BOARD_LED_B_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_D_GPIO, 1u << EXT_BOARD_LED_D_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
 	}
 	else if(lsb_Digito==4)
 	{
@@ -519,7 +508,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_F_GPIO, 1u << EXT_BOARD_LED_F_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_B_GPIO, 1u << EXT_BOARD_LED_B_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
 	}
 
 	else if(lsb_Digito==5)
@@ -555,7 +543,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_E_GPIO, 1u << EXT_BOARD_LED_E_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_D_GPIO, 1u << EXT_BOARD_LED_D_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
 	}
 	else if(lsb_Digito==7)
 	{
@@ -570,7 +557,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_A_GPIO, 1u << EXT_BOARD_LED_A_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_B_GPIO, 1u << EXT_BOARD_LED_B_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
 	}
 	else if(lsb_Digito==8)
 	{
@@ -589,7 +575,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_E_GPIO, 1u << EXT_BOARD_LED_E_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_D_GPIO, 1u << EXT_BOARD_LED_D_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
 	}
 	else if(lsb_Digito==9)
 	{
@@ -606,7 +591,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
         GPIO_SetPinsOutput(EXT_BOARD_LED_A_GPIO, 1u << EXT_BOARD_LED_A_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_B_GPIO, 1u << EXT_BOARD_LED_B_GPIO_PIN);
         GPIO_SetPinsOutput(EXT_BOARD_LED_C_GPIO, 1u << EXT_BOARD_LED_C_GPIO_PIN);
-
 	}
 	else
 	{
@@ -616,7 +600,6 @@ void Disp_7_seg(T_SBYTE lsb_Digito){
 
 void MODOS(void)
 {
-
 		rsb_SecondCount=0;
 		while(GPIO_ReadPinInput(BUTTON_RESET, BUTTON_RESET_PIN)==TRUE)
 	    	{	//wait
@@ -625,12 +608,11 @@ void MODOS(void)
       			rsb_Digito_decena=RESETVALUE;
       			rsb_Digito_centena=RESETVALUE;
 
-
 	    		if(rsb_SecondCount>=2)
 	 			{
 	   				break;
 	 			}
-	    		}
+	    	}
   		while(GPIO_ReadPinInput(BUTTON_RESET, BUTTON_RESET_PIN)==TRUE && rsb_SecondCount>=2u)
 	   		{
 	   		    rsb_Type_Mode++;
@@ -667,11 +649,7 @@ void ContadorManual(void)
 
 	    				 			}
 	    		}
-//	    		while(GPIO_ReadPinInput(BUTTON_PLUS, BUTTON_PLUS_PIN)==TRUE && rsb_SecondCount>=1u)
-//	    			    		{
-//	    			rsb_Digito_unidad++;
-//	    			break;
-//	    			    		}
+
 	    		rsb_Digito_unidad++;
 	    	}
 
@@ -688,11 +666,6 @@ void ContadorManual(void)
 	    				   				break;
 	    				 			}
 	    		}
-//	    		while(GPIO_ReadPinInput(BUTTON_SUB, BUTTON_SUB_PIN)==TRUE && SecondCount>=1u)
-//	    			    		{
-//	    			rsb_Digito_unidad--;
-//	    			break;
-//	    			    		}
 	    		rsb_Digito_unidad--;
 	    	}
 }

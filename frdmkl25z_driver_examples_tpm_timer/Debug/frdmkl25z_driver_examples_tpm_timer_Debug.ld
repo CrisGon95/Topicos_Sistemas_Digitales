@@ -5,7 +5,7 @@
  * Generated linker script file for MKL25Z128xxx4
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.23
- * MCUXpresso IDE v10.1.1 [Build 606] [2018-01-02]  on Apr 8, 2018 2:41:02 PM
+ * MCUXpresso IDE v10.1.1 [Build 606] [2018-01-02]  on Apr 12, 2018 11:09:53 AM
  */
 
 INCLUDE "frdmkl25z_driver_examples_tpm_timer_Debug_library.ld"
